@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:38:19 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/13 10:24:21 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:29:03 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
     return *this;
 }
-Bureaucrat::~Bureaucrat(){};
+Bureaucrat::~Bureaucrat() {};
 
 /*end Orthodox Canonical Form*/
 
@@ -44,7 +44,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 std::string Bureaucrat::getName() { return (this->name); }
 int Bureaucrat::getGrade() { return (this->grade); }
 
-void Bureaucrat::incrementGrade() 
+void Bureaucrat::incrementGrade()
 {
     if (grade <= 1)
         throw(GradeTooHighException());
@@ -72,4 +72,20 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
     return ("Grade is too low");
+}
+
+void Bureaucrat::signForm(Form &other)
+{
+
+    try
+    {
+        other.beSigned(*this);
+        std::cout << name << " signed " << other.getName() << std::endl;
+    }
+    catch (Form::GradeTooLowException &e)
+    {
+        std::cout << name << " couldn't sign " << other.getName()
+                  << " because " << e.what() << std::endl;
+    }
+    //<bureaucrat> couldn’t sign <form> because <reason>.
 }
