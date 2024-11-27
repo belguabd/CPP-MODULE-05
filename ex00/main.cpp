@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:44:29 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/27 11:26:56 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 12:52:12 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main()
         Bureaucrat Ab("Abdelilah Benkirane", 150);
         std::cout << Az << "\n";
         std::cout << Ab << "\n";
-        Az.incrementGrade();
         Ab.decrementGrade();
+        Az.incrementGrade();
     }
     catch (const std::exception &e)
     {

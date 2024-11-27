@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:51:53 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/27 10:15:52 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:17:37 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 ShrubberyCreationForm::~ShrubberyCreationForm() {};
 
-
-
 ShrubberyCreationForm::ShrubberyCreationForm(std::string &target)
     : AForm("ShrubberyCreationForm", 137, 145), target(target) {};
 
@@ -40,7 +38,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &other) const
     if (other.getGrade() > getExecuteGrade())
         throw(AForm::GradeTooLowException());
 
-    std::fstream file(target + "_shrubbery", std::ios::out | std::ios::in | std::ios::trunc);
+    std::ofstream file(target + "_shrubbery");
     if (file.is_open())
     {
         std::string tree;
