@@ -6,11 +6,12 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:38:19 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/14 16:00:49 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:05:12 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 /*start Orthodox Canonical Form*/
 
@@ -42,7 +43,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 }
 
 std::string Bureaucrat::getName() { return (this->name); }
-int Bureaucrat::getGrade() { return (this->grade); }
+int Bureaucrat::getGrade() const { return (this->grade); }
 
 void Bureaucrat::incrementGrade()
 {
@@ -94,16 +95,11 @@ void Bureaucrat::executeForm(AForm const &form)
 {
     try
     {
-        if (!form.getSign())
-        {
-            std::cout << "Form " << form.getName() << " is not signed yet." << std::endl;
-            return;
-        }
         form.execute(*this);
-        std::cout << name << " executed " << form.getName() << std::endl;
+        std::cout << this->getName() << " executed " << form.getName() << "\n";
     }
-    catch (AForm::GradeTooLowException &e)
+    catch (const std::exception &e)
     {
-        std::cout << "You Couldn't execute this form" << std::endl;
+        std::cout << this->getName() << " couldn't execute " << form.getName() << ": " << e.what() << "\n";
     }
 }

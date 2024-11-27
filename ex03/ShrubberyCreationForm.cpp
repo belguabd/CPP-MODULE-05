@@ -6,19 +6,35 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:51:53 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/14 15:35:19 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:15:52 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include <fstream>
+
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 137, 145), target("default") {};
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
+    : AForm(other), target(other.target) {};
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+{
+    if (this == &other)
+        return *this;
+    AForm::operator=(other);
+    target = other.target;
+    return *this;
+}
+ShrubberyCreationForm::~ShrubberyCreationForm() {};
+
+
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string &target)
     : AForm("ShrubberyCreationForm", 137, 145), target(target) {};
 
-void ShrubberyCreationForm::execute(Bureaucrat &other) const
+void ShrubberyCreationForm::execute(const Bureaucrat &other) const
 {
-    
+
     if (!getSign())
         throw(AForm::GradeTooLowException());
     if (other.getGrade() > getExecuteGrade())
@@ -43,5 +59,7 @@ void ShrubberyCreationForm::execute(Bureaucrat &other) const
         tree += "       , -=-~  .-^- _\n";
         file << tree;
         file.close();
-    }   
+    }
+    else
+        std::cout << "Error: can't open the file" << std::endl;
 }

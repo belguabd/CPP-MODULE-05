@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:28:59 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/15 10:47:36 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:36:00 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,9 @@
 AForm *Intern::makeForm(std::string name, std::string target)
 {
 
-    std::string names[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
-    int i;
-
-    i = 0;
-    while (i < 3)
-    {
-        if (names[i] == name)
-            break;
-        i++;
-    }
-
+    std::string names[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+    int i = (((names[0] == name) * 0) + ((names[1] == name) * 1) + ((names[2] == name) * 2));
+    
     switch (i)
     {
         case 0:
