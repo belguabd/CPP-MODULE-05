@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:29:50 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/14 17:53:56 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:19:40 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 class Intern
 {
     public:
+        Intern();
+        Intern(const Intern &other);
+        Intern &operator=(const Intern &other);
+        ~Intern();
         AForm *makeForm(std::string name, std::string target);
 };
 

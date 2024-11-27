@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:58:22 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/14 16:05:42 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:28:18 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,36 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 int main()
 {
-    // try
-    // {
-        
-        Bureaucrat B("Brahim", 1);
-        std::string target = "target";
+
+    try
+    {
+        Bureaucrat Az("Aziz Akhannouch", 1);
+        std::string target = "HOME";
+        RobotomyRequestForm P(target);
+        ShrubberyCreationForm S(target);
         PresidentialPardonForm R(target);
-        R.beSigned(B);
-        B.executeForm(R);
         
-
-        // R.execute(B);
-    // }
-    // catch (AForm::GradeTooLowException &e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }
-
-    // try
-    // {
-    //     Bureaucrat B("B1", 12);
-    //     ShrubberyCreationForm Shru(target);
-    //     Shru.execute(B);
-    // }
-    // catch (AForm::GradeTooLowException &e)
-    // {
-    //     std::cout << e.what() << std::endl;
-    // }
+        std::cout << Az << std::endl;
+        std::cout << P << std::endl;
+        std::cout << S << std::endl;
+        std::cout << R << std::endl;
+        std::cout << "-----------------------------------" << std::endl;
+        Az.signForm(P);
+        Az.executeForm(P);
+        Az.signForm(S);
+        Az.executeForm(S);
+        Az.signForm(R);
+        Az.executeForm(R);
+        std::cout << "-----------------------------------" << std::endl;
+        
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << e.what() << "\n";
+    }
 }

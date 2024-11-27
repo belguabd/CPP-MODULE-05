@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:18:23 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/13 15:26:14 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:41:22 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ class Bureaucrat;
 class AForm
 {
 public:
-    /*start Orthodox Canonical AForm*/
-    // AForm();
-    // AForm(const AForm &other);
-    // AForm &operator=(const AForm &other);
-    // ~AForm();
+    /*start Orthodox Canonical Form*/
+    AForm();
+    AForm(const AForm &other);
+    AForm &operator=(const AForm &other);
+    ~AForm();
     /*end Orthodox Canonical AForm*/
+
     AForm(std::string name, int executeGrade, int signGrade);
 
     class GradeTooHighException : public std::exception
@@ -45,12 +46,11 @@ public:
     int getSignGrade() const;
     bool getSign() const;
 
-    void beSigned(Bureaucrat &other) ;
-
-    virtual void execute(Bureaucrat &other) const= 0 ;
+    void beSigned(Bureaucrat &other);
+    virtual void execute(Bureaucrat const &executor) const = 0;
 
 private:
-    std::string name;
+    const std::string name;
     const int executeGrade;
     const int signGrade;
     bool is_sign;

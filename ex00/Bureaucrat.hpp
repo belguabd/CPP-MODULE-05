@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:38:28 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/13 10:21:19 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:27:07 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,26 @@ public:
 
     class GradeTooHighException : public std::exception
     {
-        public:
-            const char *what() const throw();
+    public:
+        const char *what() const throw();
     };
     class GradeTooLowException : public std::exception
     {
-        public:
-            const char *what() const throw();
+    public:
+        const char *what() const throw();
     };
 
-    void incrementGrade();
-    void decrementGrade();
+    void incrementGrade() ;
+    void decrementGrade() ;
 
-    std::string getName();
-    int getGrade();
+    std::string getName() const;
+    int getGrade() const;
 
 private:
     const std::string name;
     int grade;
 };
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &obj);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj);
 
 #endif

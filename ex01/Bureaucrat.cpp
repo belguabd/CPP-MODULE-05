@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:38:19 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/13 12:29:03 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:06:05 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
     return *this;
 }
-Bureaucrat::~Bureaucrat() {};
+Bureaucrat::~Bureaucrat(){};
 
 /*end Orthodox Canonical Form*/
 
@@ -44,7 +44,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 std::string Bureaucrat::getName() { return (this->name); }
 int Bureaucrat::getGrade() { return (this->grade); }
 
-void Bureaucrat::incrementGrade()
+void Bureaucrat::incrementGrade() 
 {
     if (grade <= 1)
         throw(GradeTooHighException());

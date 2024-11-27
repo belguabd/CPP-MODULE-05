@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:39:59 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/13 13:53:39 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:18:33 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 /*start Orthodox Canonical Form*/
 
-Form::Form() : name("default"), executeGrade(1), signGrade(1), is_sign(true) {};
+Form::Form() : name("Default Form"), executeGrade(1), signGrade(1), is_sign(false) {};
 
-Form::Form(const Form &other)
-{
-    name = other.name;
-    is_sign = other.is_sign;
-}
+Form::Form(const Form &other) : name(other.name),
+                                executeGrade(other.executeGrade),
+                                signGrade(other.signGrade),
+                                is_sign(other.is_sign) {}
 
 Form &Form::operator=(const Form &other)
 {
     if (this == &other)
         return (*this);
-    name = other.name;
     is_sign = other.is_sign;
     return (*this);
 }
@@ -36,7 +34,7 @@ Form::~Form() {};
 /*end Orthodox Canonical Form*/
 
 Form::Form(std::string name, int executeGrade, int signGrade)
-    : name(name), executeGrade(executeGrade), signGrade(signGrade)
+    : name(name), executeGrade(executeGrade), signGrade(signGrade), is_sign(false)
 {
     if (executeGrade < 1 || signGrade < 1)
         throw(GradeTooHighException());

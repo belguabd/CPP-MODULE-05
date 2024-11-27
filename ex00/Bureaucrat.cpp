@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:38:19 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/13 10:24:21 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:26:47 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 Bureaucrat::Bureaucrat() : name("default"), grade(1) {}
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name)
 {
     this->grade = other.grade;
 }
@@ -28,7 +28,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
     return *this;
 }
-Bureaucrat::~Bureaucrat(){};
+Bureaucrat::~Bureaucrat() {};
 
 /*end Orthodox Canonical Form*/
 
@@ -41,10 +41,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
     this->grade = grade;
 }
 
-std::string Bureaucrat::getName() { return (this->name); }
-int Bureaucrat::getGrade() { return (this->grade); }
+std::string Bureaucrat::getName() const { return (this->name); }
+int Bureaucrat::getGrade() const { return (this->grade); }
 
-void Bureaucrat::incrementGrade() 
+void Bureaucrat::incrementGrade()
 {
     if (grade <= 1)
         throw(GradeTooHighException());
@@ -58,7 +58,7 @@ void Bureaucrat::decrementGrade()
     grade++;
 }
 
-std::ostream &operator<<(std::ostream &out, Bureaucrat &obj)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &obj)
 {
     out << obj.getName() << ", bureaucrat grade " << obj.getGrade();
     return (out);

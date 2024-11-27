@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 09:38:19 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/26 19:05:12 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:36:13 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
     this->grade = grade;
 }
 
-std::string Bureaucrat::getName() { return (this->name); }
+std::string Bureaucrat::getName() const { return (this->name); }
 int Bureaucrat::getGrade() const { return (this->grade); }
 
 void Bureaucrat::incrementGrade()
@@ -88,7 +88,6 @@ void Bureaucrat::signForm(AForm &other)
         std::cout << name << " couldn't sign " << other.getName()
                   << " because " << e.what() << std::endl;
     }
-    //<bureaucrat> couldn’t sign <form> because <reason>.
 }
 
 void Bureaucrat::executeForm(AForm const &form)

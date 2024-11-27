@@ -6,7 +6,7 @@
 /*   By: belguabd <belguabd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:58:22 by belguabd          #+#    #+#             */
-/*   Updated: 2024/11/27 10:34:15 by belguabd         ###   ########.fr       */
+/*   Updated: 2024/11/27 11:46:42 by belguabd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int main()
 {
 
     Intern someRandomIntern;
-    Form *rrf;
+    AForm *rrf;
     rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+    Bureaucrat Az("Aziz Akhannouch", 1);
+    std::cout << Az << std::endl;
+    Az.signForm(*rrf);
+    Az.executeForm(*rrf);
+    delete rrf;
 }
